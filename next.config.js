@@ -2,19 +2,23 @@
 
 const isGithubActions = process.env.GITHUB_ACTIONS || false
 
-let assetPrefix = ''
 let basePath = '/'
+let assetPrefix = ''
 
 if (isGithubActions) {
   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
-  assetPrefix = `/${repo}/`
   basePath = `/${repo}`
+  assetPrefix = `/${repo}/`
 }
 
 const nextConfig = {
   reactStrictMode: true,
-  basePath: '/farhoodme',
-  assetPrefix: '/farhoodme/',
+  basePath: basePath,
+  assetPrefix: assetPrefix,
+  images: {
+    loader: 'imgix',
+    path: 'farhoodme.imgix.net',
+  },
 }
 
 module.exports = nextConfig
