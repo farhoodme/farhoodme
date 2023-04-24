@@ -1,13 +1,12 @@
 /** @type {import('next').NextConfig} */
 
-const isGithubActions = process.env.GITHUB_ACTIONS || false
+const isProd = process.env.NODE_ENV === 'production'
 
 let assetPrefix = ''
 let basePath = '/'
 
-if (isGithubActions) {
-  // trim off `<owner>/`
-  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
+if (isProd) {
+  const repo = 'farhoodme'
 
   assetPrefix = `/${repo}/`
   basePath = `/${repo}`
