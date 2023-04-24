@@ -1,21 +1,20 @@
 /** @type {import('next').NextConfig} */
 
-const isProd = process.env.NODE_ENV === 'production'
+const isGithubActions = process.env.GITHUB_ACTIONS || false
 
 let assetPrefix = ''
 let basePath = '/'
 
-if (isProd) {
-  const repo = 'farhoodme'
-
+if (isGithubActions) {
+  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
   assetPrefix = `/${repo}/`
   basePath = `/${repo}`
 }
 
 const nextConfig = {
   reactStrictMode: true,
-  assetPrefix: assetPrefix,
-  basePath: basePath
+  basePath: '/farhoodme',
+  assetPrefix: '/farhoodme/',
 }
 
 module.exports = nextConfig
