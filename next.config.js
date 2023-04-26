@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
+const withImages = require('next-images');
+const withPlugins = require('next-compose-plugins');
 
 const isGithubActions = process.env.GITHUB_ACTIONS || false
-const isProd = process.env.NODE_ENV === 'production'
 
 let basePath = '/'
 let assetPrefix = ''
@@ -12,10 +13,15 @@ if (isGithubActions) {
   assetPrefix = `/${repo}/`
 }
 
-const nextConfig = {
-  reactStrictMode: true,
-  basePath: isProd ? '/farhoodme' : '/',
-  assetPrefix: isProd ? '/farhoodme/' : '',
-}
+const nextConfig = withPlugins([
+  [withImages, {
+    assetPrefix: assetPrefix
+  }],
+  {
+    reactStrictMode: true,
+    basePath: basePath,
+    assetPrefix: assetPrefix,
+  }
+])
 
 module.exports = nextConfig
