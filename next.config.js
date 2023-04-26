@@ -14,7 +14,7 @@ if (isGithubActions) {
 
 const nextConfig = {
   reactStrictMode: true,
-  basePath: isGithubActions ? '/farhoodme' : '',
+  basePath: isGithubActions ? '/farhoodme' : '/',
   assetPrefix: isGithubActions ? '/farhoodme/' : '',
 }
 
