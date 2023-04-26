@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const isGithubActions = process.env.GITHUB_ACTIONS || false
+const isProd = process.env.NODE_ENV === 'production'
 
 let basePath = '/'
 let assetPrefix = ''
@@ -13,8 +14,8 @@ if (isGithubActions) {
 
 const nextConfig = {
   reactStrictMode: true,
-  basePath: '/farhoodme',
-  assetPrefix: 'farhoodme',
+  basePath: isProd ? '/farhoodme' : '',
+  assetPrefix: isProd ? 'farhoodme' : '',
 }
 
 module.exports = nextConfig
