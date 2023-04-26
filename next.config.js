@@ -13,12 +13,8 @@ if (isGithubActions) {
 
 const nextConfig = {
   reactStrictMode: true,
-  basePath: basePath,
-  assetPrefix: assetPrefix,
-  images: {
-    loader: 'imgix',
-    path: 'farhoodme.imgix.net',
-  },
+  basePath: '/farhoodme',
+  assetPrefix: 'farhoodme',
 }
 
 module.exports = nextConfig
