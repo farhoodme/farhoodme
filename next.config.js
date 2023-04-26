@@ -14,8 +14,8 @@ if (isGithubActions) {
 
 const nextConfig = {
   reactStrictMode: true,
-  basePath: isProd ? '/farhoodme' : '',
-  assetPrefix: isProd ? 'farhoodme' : '',
+  basePath: isGithubActions ? '/farhoodme' : '',
+  assetPrefix: isGithubActions ? '/farhoodme/' : '',
 }
 
 module.exports = nextConfig
