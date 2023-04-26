@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const withImages = require('next-images');
+const withImages = require('next/images');
 const withPlugins = require('next-compose-plugins');
 
 const isGithubActions = process.env.GITHUB_ACTIONS || false
